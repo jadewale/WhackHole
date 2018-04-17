@@ -12,11 +12,17 @@ class GamePanel extends React.Component {
       grid: [1, 2, 3, 4, 5, 6]
     }
   }
+
+  onClick = (e) => {
+    console.log('The key Path is ', e);
+  }
+
   render () {
     return (
       <View style={{ flex: 1, backgroundColor: '#C9BF9C' }}>
         { this.state.grid.map((obj, index) =>
-          (index % 2 === 0) ? <Double width={ percentage } /> : <Single width={ percentage } />
+          (index % 2 === 0) ? <Double keyPath={index} onClick={ this.onClick } width={ percentage } />
+            : <Single keyPath={index} onClick={ this.onClick } width={ percentage } />
         ) }
       </View>
     )
