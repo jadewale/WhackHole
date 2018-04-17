@@ -1,11 +1,15 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
+import Header from '../component/header';
+import GamePanel from '../container/gamePanel';
 
 class Dashboard extends React.Component {
   render () {
-    return (<View>
-      <Text> Hello World </Text>
-    </View>
+    return (
+      <View style={{ flex: 1 }}>
+        <Header/>
+        <GamePanel/>
+      </View>
     )
   }
 }
