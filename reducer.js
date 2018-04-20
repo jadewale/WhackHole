@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { SHOW_MOLE, HIDE_MOLE, MOLE_INCREASE, MOLE_DECREASE, DECREASE_TIMER, END_GAME } from './constants'
+import { SHOW_MOLE, HIDE_MOLE, MOLE_INCREASE, MOLE_DECREASE, DECREASE_TIMER, END_GAME, RESTART_GAME } from './constants'
 
 export function root (state = { count: 0, timer: 120000, run: true }, action) {
   switch (action.type) {
@@ -22,7 +22,10 @@ export function root (state = { count: 0, timer: 120000, run: true }, action) {
       return { ...state, timer };
 
     case END_GAME:
-      return { ...state, run: false }
+      return { ...state, run: false, count: 0, timer: 0 };
+
+    case RESTART_GAME:
+      return { ...state, run: true, timer: 120000 };
     case SHOW_MOLE:
       return state;
     case HIDE_MOLE:

@@ -2,10 +2,10 @@ import React from 'react';
 import { Text, TouchableHighlight } from 'react-native';
 import styles from './styles';
 
-const Button = ({ text }) => (
+const Button = ({ text, onClick }) => (
   <TouchableHighlight
     style={styles.submit}
-    onPress={() => {}}
+    onPress={onClick}
     underlayColor='#fff'>
     <Text style={styles.submitText}>{text}</Text>
   </TouchableHighlight>

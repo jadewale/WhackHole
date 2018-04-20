@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, ImageBackground } from 'react-native';
 import Button from '../button';
 import TimerCountdown from 'react-native-timer-countdown';
 
@@ -13,7 +13,7 @@ class Timer extends React.Component {
   render () {
     return (
       <Button text={<TimerCountdown
-        initialSecondsRemaining={12000}
+        initialSecondsRemaining={this.props.timer}
         onTick={() => {}}
         onTimeElapsed={this.props.endGame}
         allowFontScaling={true}
@@ -46,8 +46,8 @@ class Header extends React.Component {
         borderBottomWidth: 1,
         borderBottomColor: 'black',
       }}>
-        <Button text={this.props.count}/>
-        <Timer endGame={this.props.endGame}/>
+          <Button onClick={() => {}} text={this.props.count}/>
+          <Timer timer={this.props.timer} onClick={() => {}} endGame={this.props.endGame}/>s
       </View>
     )
   }

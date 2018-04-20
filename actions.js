@@ -1,4 +1,4 @@
-import { DECREASE_TIMER, END_GAME, MOLE_DECREASE, MOLE_INCREASE } from './constants'
+import { DECREASE_TIMER, END_GAME, MOLE_DECREASE, MOLE_INCREASE, RESTART_GAME } from './constants'
 
 export function increaseCount () {
   return {
@@ -21,5 +21,11 @@ export function decreaseTimer () {
 export function endGame () {
   return {
     type: END_GAME,
+  }
+}
+
+export function restartGame () {
+  return {
+    type: RESTART_GAME,
   }
 }
