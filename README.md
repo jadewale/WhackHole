@@ -1,4 +1,4 @@
-##Whack a Mole
+## Whack a Mole
 ##
 A game in which players use a mallet to hit toy moles, which appear at random, back into their holes.
 ## How To Run
