@@ -1,59 +1,62 @@
 import React from 'react';
+import Proptypes from 'prop-types';
 import * as Animatable from 'react-native-animatable';
-import styles from './styles';
 import { TouchableOpacity } from 'react-native';
+import styles from './styles';
+
 
 class Animation extends React.Component {
-
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
-      down: '',
-      up: '',
-      display: 'none'
-    }
-    this.whackAmole = this.whackAmole.bind(this);
+      display: 'none',
+    };
   }
 
-  showAnimation = () => {
-    this.setState({animation: 'slideOutUp', display: 'flex'})
-    setTimeout(()=> this.hideAnimation(), 2000);
+  componentDidMount() {
+    this.startInterval();
   }
 
   hideAnimation = () => {
-    this.setState({animation: '', display: 'none'})
+    this.setState({ animation: '', display: 'none' });
   }
 
   startInterval = () => {
-    let timer = Math.floor(Math.random() * 15000);
+    const timer = Math.floor(Math.random() * 15000);
     if (timer < 4187) {
       this.startInterval();
       return;
     }
-    setInterval( () => this.showAnimation(), timer)
+    setInterval(() => this.showAnimation(), timer);
   }
 
-  componentDidMount () {
-    this.startInterval();
+  showAnimation = () => {
+    this.setState({ animation: 'slideOutUp', display: 'flex' });
+    setTimeout(() => this.hideAnimation(), 2000);
   }
 
-  whackAmole () {
+  whackAmole = () => {
     this.hideAnimation();
     this.props.addCount();
   }
 
-  render () {
+  render() {
     return (
-      <TouchableOpacity onPress={ this.whackAmole}>
+      <TouchableOpacity onPress={this.whackAmole}>
         <Animatable.Image
-          style={ [styles.backgroundMole, { display: this.state.display }] }
-          source={require('../../img/mole.png')}
+          style={[styles.backgroundMole, { display: this.state.display }]}
+          source={import('../../img/mole.png')}
           animation={this.state.animation}
-          direction="alternate">
+          direction="alternate"
+        >
         </Animatable.Image>
       </TouchableOpacity>
-    )
+    );
   }
 }
+
+Animation.propTypes = {
+  addCount: Proptypes.func.isRequired,
+};
 
 export default Animation;
