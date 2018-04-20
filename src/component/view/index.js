@@ -1,8 +1,11 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
-
+import { TouchableOpacity, View } from 'react-native';
 const ClickableView = (props) => (
-  <TouchableOpacity { ...props} />
+  <TouchableOpacity { ...props} >
+    <View>
+      {props.children}
+    </View>
+  </TouchableOpacity>
 )
 
 export default ClickableView;

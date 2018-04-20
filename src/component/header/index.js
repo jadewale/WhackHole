@@ -1,20 +1,56 @@
 import React from 'react';
 import { View } from 'react-native';
 import Button from '../button';
+import TimerCountdown from 'react-native-timer-countdown';
 
-const Header = () => {
-  return (
-    <View style={{
-      flex: 0 , flexDirection: 'row',
-      marginTop: 50,
-      justifyContent: 'space-between',
-      borderBottomWidth:1,
-      borderBottomColor: 'black',
-    }}>
-      <Button/>
-      <Button/>
-    </View>
-  )
+
+class Timer extends React.Component {
+
+  shouldComponentUpdate() {
+    return false;
+  }
+
+  render () {
+    return (
+      <Button text={<TimerCountdown
+        initialSecondsRemaining={12000}
+        onTick={() => {}}
+        onTimeElapsed={this.props.endGame}
+        allowFontScaling={true}
+        style={{fontSize: 20}}
+      />}/>
+    )
+  }
+}
+
+class Header extends React.Component {
+
+  constructor (props) {
+    super(props);
+    console.log(props)
+  }
+
+  shouldComponentUpdate(nextProps, nextState){
+    if(nextProps.count !== this.props.count){
+      return true;
+    }
+    return false;
+  }
+
+  render () {
+    return (
+      <View style={{
+        flex: 0, flexDirection: 'row',
+        marginTop: 50,
+        justifyContent: 'space-between',
+        borderBottomWidth: 1,
+        borderBottomColor: 'black',
+      }}>
+        <Button text={this.props.count}/>
+        <Timer endGame={this.props.endGame}/>
+      </View>
+    )
+  }
 }
 
 export default Header;
