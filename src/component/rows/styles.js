@@ -8,13 +8,13 @@ export default StyleSheet.create({
   row: {
     flex: 1,
     justifyContent: 'flex-end',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   hole: {
 
   },
   holeNot: {
-    backgroundColor: 'gray'
+    backgroundColor: 'gray',
   },
   backgroundImage: {
     width: 100,
