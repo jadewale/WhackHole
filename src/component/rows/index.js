@@ -16,7 +16,7 @@ export const Double = ({ addCount, decreaseCount }) => (
             onPress={decreaseCount}
             style={[styles.row, styles.hole]}
           >
-            <ImageBackground style={styles.backgroundImage} source={import('../../img/hole.png')}>
+            <ImageBackground style={styles.backgroundImage} source={require('../../img/hole.png')}>
               <Animation addCount={addCount} />
             </ImageBackground>
           </ClickableView> :
@@ -46,7 +46,7 @@ export const Single = ({
             onPress={decreaseCount}
             style={[styles.row, styles.hole]}
           >
-            <ImageBackground style={styles.backgroundImage} source={import('../../img/hole.png')}>
+            <ImageBackground style={styles.backgroundImage} source={require('../../img/hole.png')}>
               <Animation addCount={addCount} />
             </ImageBackground>
           </ClickableView>
