@@ -45,7 +45,7 @@ class Animation extends React.Component {
       <TouchableOpacity onPress={this.whackAmole}>
         <Animatable.Image
           style={[styles.backgroundMole, { display: this.state.display }]}
-          source={import('../../img/mole.png')}
+          source={require('../../img/mole.png')}
           animation={this.state.animation}
           direction="alternate"
         >
