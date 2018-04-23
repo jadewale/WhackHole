@@ -23,6 +23,7 @@ class Animation extends React.Component {
 
   startInterval = () => {
     const timer = Math.floor(Math.random() * 15000);
+    
     if (timer < 4187) {
       this.startInterval();
       return;
