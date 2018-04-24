@@ -22,8 +22,8 @@ class GamePanel extends React.Component {
     return (
       <View style={{ flex: 1, backgroundColor: '#C9BF9C' }}>
         { this.state.grid.map((obj, index) =>
-          (index % 2 === 0) ? <Double decreaseCount={this.props.decreaseCount} addCount={this.props.addCount} keyPath={index} onClick={this.onClick} width={percentage} />
-            : <Single keyPath={index} decreaseCount={this.props.decreaseCount} addCount={this.props.addCount} onClick={this.onClick} width={percentage} />
+          (index % 2 === 0) ? <Double key={index.toString()} decreaseCount={this.props.decreaseCount} addCount={this.props.addCount} keyPath={index} onClick={this.onClick} width={percentage} />
+            : <Single key={index.toString()} keyPath={index} decreaseCount={this.props.decreaseCount} addCount={this.props.addCount} onClick={this.onClick} width={percentage} />
         ) }
       </View>
     );

@@ -7,6 +7,10 @@ import GamePanel from '../container/gamePanel';
 import { increaseCount, decreaseCount, decreaseTimer, endGame, restartGame } from '../../actions';
 import Button from '../component/button/index';
 
+
+// https://github.com/GeekyAnts/NativeBase/issues/1665
+console.disableYellowBox = true;
+
 const RestartButton = ({ onClick }) => (
   <Button onClick={onClick} text="Restart Game" />
 );

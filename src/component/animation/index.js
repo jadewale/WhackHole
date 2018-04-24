@@ -23,7 +23,7 @@ class Animation extends React.Component {
 
   startInterval = () => {
     const timer = Math.floor(Math.random() * 15000);
-    
+
     if (timer < 4187) {
       this.startInterval();
       return;
@@ -32,7 +32,7 @@ class Animation extends React.Component {
   }
 
   showAnimation = () => {
-    this.setState({ animation: 'slideOutUp', display: 'flex' });
+    this.setState({ animation: 'slideOutUp' }, () => setTimeout(() => this.setState({ display: 'flex' }), 1000));
     setTimeout(() => this.hideAnimation(), 2000);
   }
 
