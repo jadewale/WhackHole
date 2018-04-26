@@ -24,15 +24,13 @@ class GamePanel extends React.Component {
         { this.state.grid.map((obj, index) =>
           (index % 2 === 0) ? <Double
             key={index.toString()}
-            background={this.props.background}
             decreaseCount={this.props.decreaseCount}
             addCount={this.props.addCount}
             keyPath={index}
             onClick={this.onClick}
-            updateBackground={this.props.updateBackground}
             width={percentage}
           />
-            : <Single key={index.toString()} keyPath={index} updateBackground={this.props.updateBackground} background={this.props.background} decreaseCount={this.props.decreaseCount} addCount={this.props.addCount} onClick={this.onClick} width={percentage} />
+            : <Single key={index.toString()} keyPath={index}  decreaseCount={this.props.decreaseCount} addCount={this.props.addCount} onClick={this.onClick} width={percentage} />
         ) }
       </View>
     );
@@ -41,9 +39,7 @@ class GamePanel extends React.Component {
 
 GamePanel.propTypes = {
   addCount: PropTypes.func.isRequired,
-  background: PropTypes.object.isRequired,
   decreaseCount: PropTypes.func.isRequired,
-  updateBackground: PropTypes.func.isRequired,
 };
 
 export default GamePanel;

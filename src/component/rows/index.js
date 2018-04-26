@@ -10,28 +10,18 @@ export const Double = ({
 }) => (
   <View style={styles.container}>
     {
-      ['Key-', 'Key-', 'Key-'].map((obj, index) => {
-        let image = '';
-        if (background[`${obj}${index}`]) {
-          console.log('I found');
-          image = require('../../img/holeMask.png');
-        } else {
-          console.log('I never found');
-          image = require('../../img/hole.png');
-        }
-        return (
-          (index % 2 === 0) ?
-            <ClickableView
-              key={index.toString()}
-              addCount={addCount}
-              onPress={decreaseCount}
-              style={[styles.row, styles.hole]}
-            >
-              <Animation updateBackground={updateBackground} id={`${obj}${index}`} addCount={addCount} />
-            </ClickableView> :
-            <ClickableView key={index.toString()} style={styles.row}> </ClickableView>
-        );
-      })
+      ['Key-', 'Key-', 'Key-'].map((obj, index) => (
+        (index % 2 === 0) ?
+          <ClickableView
+            key={index.toString()}
+            addCount={addCount}
+            onPress={decreaseCount}
+            style={[styles.row, styles.hole]}
+          >
+            <Animation updateBackground={updateBackground} id={`${obj}${index}`} addCount={addCount} />
+          </ClickableView> :
+          <ClickableView key={index.toString()} style={styles.row}> </ClickableView>
+      ))
     }
   </View>
 );
