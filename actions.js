@@ -1,31 +1,39 @@
-import { DECREASE_TIMER, END_GAME, MOLE_DECREASE, MOLE_INCREASE, RESTART_GAME } from './constants'
+import { DECREASE_TIMER, END_GAME, MOLE_DECREASE, MOLE_INCREASE, RESTART_GAME, UPDATE_BACKGROUND } from './constants'
 
-export function increaseCount () {
+export function increaseCount() {
   return {
     type: MOLE_INCREASE,
-  }
+  };
 }
 
-export function decreaseCount () {
+export function decreaseCount() {
   return {
     type: MOLE_DECREASE,
-  }
+  };
 }
 
-export function decreaseTimer () {
+export function decreaseTimer() {
   return {
     type: DECREASE_TIMER,
-  }
+  };
 }
 
-export function endGame () {
+export function endGame() {
   return {
     type: END_GAME,
-  }
+  };
 }
 
-export function restartGame () {
+export function restartGame() {
   return {
     type: RESTART_GAME,
-  }
+  };
+}
+
+export function updateBackground(id, status) {
+  return {
+    type: UPDATE_BACKGROUND,
+    id,
+    status,
+  };
 }

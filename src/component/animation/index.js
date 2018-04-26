@@ -1,15 +1,18 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 import * as Animatable from 'react-native-animatable';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, ImageBackground, View } from 'react-native';
 import styles from './styles';
 
 
 class Animation extends React.Component {
   constructor(props) {
     super(props);
+    const image = require('../../img/hole.png');
+
     this.state = {
       display: 'none',
+      image,
     };
   }
 
@@ -17,12 +20,10 @@ class Animation extends React.Component {
     this.startInterval();
   }
 
-  shouldComponentUpdate(nextProps) {
-    return false;
-  }
 
   hideAnimation = () => {
-    this.props.updateBackground(this.props.id, false);
+    const image = require('../../img/hole.png');
+    this.setState({ image });
     this.setState({ animation: '', display: 'none' });
   }
 
@@ -37,8 +38,8 @@ class Animation extends React.Component {
   }
 
   showAnimation = () => {
-    this.setState({ animation: 'slideOutUp' }, () => setTimeout(() => this.setState({ display: 'flex' }), 1000));
-    this.props.updateBackground(this.props.id, true);
+    const image = require('../../img/holeMask.png');
+    this.setState({ animation: 'slideOutUp' }, () => setTimeout(() => this.setState({ display: 'flex', image }), 1000));
     setTimeout(() => this.hideAnimation(), 2000);
   }
 
@@ -49,23 +50,25 @@ class Animation extends React.Component {
 
   render() {
     return (
-      <TouchableOpacity onPress={this.whackAmole}>
-        <Animatable.Image
-          style={[styles.backgroundMole, { display: this.state.display }]}
-          source={require('../../img/mole.png')}
-          animation={this.state.animation}
-          direction="alternate"
-        >
-        </Animatable.Image>
-      </TouchableOpacity>
+      <View>
+        <ImageBackground style={[styles.backgroundImage, { zIndex: 1 }]} source={this.state.image}>
+          <TouchableOpacity style={{ zIndex: -2 }} onPress={this.whackAmole}>
+            <Animatable.Image
+              style={[styles.backgroundMole, { display: this.state.display }]}
+              source={require('../../img/mole.png')}
+              animation={this.state.animation}
+              direction="alternate"
+            >
+            </Animatable.Image>
+          </TouchableOpacity>
+        </ImageBackground>
+      </View>
     );
   }
 }
 
 Animation.propTypes = {
   addCount: Proptypes.func.isRequired,
-  id: Proptypes.string.isRequired,
-  updateBackground: Proptypes.func.isRequired,
 };
 
 export default Animation;

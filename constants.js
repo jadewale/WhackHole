@@ -5,3 +5,4 @@ export const MOLE_DECREASE = 'MOLE_DECREASE';
 export const DECREASE_TIMER = 'DECREASE_TIMER';
 export const END_GAME = 'END_GAME';
 export const RESTART_GAME = 'RESTART_GAME';
+export const UPDATE_BACKGROUND = 'UPDATE_BACKGROUND';

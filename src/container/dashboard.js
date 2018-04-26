@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { View } from 'react-native';
 import Header from '../component/header';
 import GamePanel from '../container/gamePanel';
-import { increaseCount, decreaseCount, decreaseTimer, endGame, restartGame } from '../../actions';
+import { increaseCount, decreaseCount, decreaseTimer, endGame, restartGame, updateBackground } from '../../actions'
 import Button from '../component/button/index';
 
 
@@ -46,7 +46,7 @@ class Dashboard extends React.Component {
         { this.props.run ? <Header endGame={this.endGame} decreaseTimer={this.decreaseTimer} timer={this.props.timer} count={this.props.count} /> : null }
 
         { this.props.run ?
-          <GamePanel decreaseCount={this.decreaseCount} addCount={this.addTotalCount} /> :
+          <GamePanel decreaseCount={this.decreaseCount} background={this.props.background} updateBackground={this.props.updateBackground} addCount={this.addTotalCount} /> :
           <RestartButton onClick={this.restartGame} />
         }
       </View>
@@ -59,6 +59,7 @@ function mapStateToProps(state) {
     count: state.root.count,
     timer: state.root.timer,
     run: state.root.run,
+    background: state.root.background,
   };
 }
 
@@ -69,10 +70,12 @@ function mapDispatchToProps(dispatch) {
     decreaseTimer: () => dispatch(decreaseTimer()),
     endGame: () => dispatch(endGame()),
     restartGame: () => dispatch(restartGame()),
+    updateBackground: (id, status) => dispatch(updateBackground(id, status)),
   };
 }
 
 Dashboard.propTypes = {
+  background: PropTypes.object.isRequired,
   count: PropTypes.number.isRequired,
   timer: PropTypes.number.isRequired,
   run: PropTypes.bool.isRequired,
@@ -81,6 +84,7 @@ Dashboard.propTypes = {
   decreaseTimer: PropTypes.func.isRequired,
   endGame: PropTypes.func.isRequired,
   restartGame: PropTypes.func.isRequired,
+  updateBackground: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

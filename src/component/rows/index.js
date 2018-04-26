@@ -5,23 +5,33 @@ import styles from './styles';
 import ClickableView from '../view';
 import Animation from '../animation';
 
-export const Double = ({ addCount, decreaseCount, updateBackground }) => (
+export const Double = ({
+  addCount, decreaseCount, updateBackground, background,
+}) => (
   <View style={styles.container}>
     {
-      ['Key-', 'Key-', 'Key-'].map((obj, index) => (
-        (index % 2 === 0) ?
-          <ClickableView
-            key={index.toString()}
-            addCount={addCount}
-            onPress={decreaseCount}
-            style={[styles.row, styles.hole]}
-          >
-            <ImageBackground style={styles.backgroundImage} source={require('../../img/hole.png')}>
+      ['Key-', 'Key-', 'Key-'].map((obj, index) => {
+        let image = '';
+        if (background[`${obj}${index}`]) {
+          console.log('I found');
+          image = require('../../img/holeMask.png');
+        } else {
+          console.log('I never found');
+          image = require('../../img/hole.png');
+        }
+        return (
+          (index % 2 === 0) ?
+            <ClickableView
+              key={index.toString()}
+              addCount={addCount}
+              onPress={decreaseCount}
+              style={[styles.row, styles.hole]}
+            >
               <Animation updateBackground={updateBackground} id={`${obj}${index}`} addCount={addCount} />
-            </ImageBackground>
-          </ClickableView> :
-          <ClickableView key={index.toString()} style={styles.row}> </ClickableView>
-      ))
+            </ClickableView> :
+            <ClickableView key={index.toString()} style={styles.row}> </ClickableView>
+        );
+      })
     }
   </View>
 );
@@ -29,6 +39,8 @@ export const Double = ({ addCount, decreaseCount, updateBackground }) => (
 Double.propTypes = {
   addCount: PropTypes.func.isRequired,
   decreaseCount: PropTypes.func.isRequired,
+  background: PropTypes.object.isRequired,
+  updateBackground: PropTypes.func.isRequired,
 };
 
 
@@ -46,9 +58,7 @@ export const Single = ({
             onPress={decreaseCount}
             style={[styles.row, styles.hole]}
           >
-            <ImageBackground style={styles.backgroundImage} source={require('../../img/hole.png')}>
-              <Animation updateBackground={updateBackground} id={`${obj}${index}`} addCount={addCount} />
-            </ImageBackground>
+            <Animation updateBackground={updateBackground} id={`${obj}${index}`} addCount={addCount} />
           </ClickableView>
       ))
     }
