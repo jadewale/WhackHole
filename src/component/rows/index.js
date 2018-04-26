@@ -5,10 +5,10 @@ import styles from './styles';
 import ClickableView from '../view';
 import Animation from '../animation';
 
-export const Double = ({ addCount, decreaseCount }) => (
+export const Double = ({ addCount, decreaseCount, updateBackground }) => (
   <View style={styles.container}>
     {
-      ['One', 'Two', 'Three'].map((obj, index) => (
+      ['Key-', 'Key-', 'Key-'].map((obj, index) => (
         (index % 2 === 0) ?
           <ClickableView
             key={index.toString()}
@@ -17,7 +17,7 @@ export const Double = ({ addCount, decreaseCount }) => (
             style={[styles.row, styles.hole]}
           >
             <ImageBackground style={styles.backgroundImage} source={require('../../img/hole.png')}>
-              <Animation addCount={addCount} />
+              <Animation updateBackground={updateBackground} id={`${obj}${index}`} addCount={addCount} />
             </ImageBackground>
           </ClickableView> :
           <ClickableView key={index.toString()} style={styles.row}> </ClickableView>
@@ -33,11 +33,11 @@ Double.propTypes = {
 
 
 export const Single = ({
-  addCount, decreaseCount,
+  addCount, decreaseCount, updateBackground,
 }) => (
   <View style={styles.container}>
     {
-      ['One', 'Two', 'Three'].map((obj, index) => (
+      ['One-', 'Two-', 'Three-'].map((obj, index) => (
         (index % 2 === 0) ?
           <ClickableView key={index.toString()} style={styles.row}> </ClickableView> :
           <ClickableView
@@ -47,7 +47,7 @@ export const Single = ({
             style={[styles.row, styles.hole]}
           >
             <ImageBackground style={styles.backgroundImage} source={require('../../img/hole.png')}>
-              <Animation addCount={addCount} />
+              <Animation updateBackground={updateBackground} id={`${obj}${index}`} addCount={addCount} />
             </ImageBackground>
           </ClickableView>
       ))

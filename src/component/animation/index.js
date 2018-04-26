@@ -17,7 +17,12 @@ class Animation extends React.Component {
     this.startInterval();
   }
 
+  shouldComponentUpdate(nextProps) {
+    return false;
+  }
+
   hideAnimation = () => {
+    this.props.updateBackground(this.props.id, false);
     this.setState({ animation: '', display: 'none' });
   }
 
@@ -33,6 +38,7 @@ class Animation extends React.Component {
 
   showAnimation = () => {
     this.setState({ animation: 'slideOutUp' }, () => setTimeout(() => this.setState({ display: 'flex' }), 1000));
+    this.props.updateBackground(this.props.id, true);
     setTimeout(() => this.hideAnimation(), 2000);
   }
 
@@ -58,6 +64,8 @@ class Animation extends React.Component {
 
 Animation.propTypes = {
   addCount: Proptypes.func.isRequired,
+  id: Proptypes.string.isRequired,
+  updateBackground: Proptypes.func.isRequired,
 };
 
 export default Animation;
