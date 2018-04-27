@@ -39,7 +39,7 @@ class Animation extends React.Component {
 
   showAnimation = () => {
     const image = require('../../img/hole.png');
-    this.setState({ animation: 'slideOutUp' }, () => setTimeout(() => this.setState({ display: 'flex', image }), 1000));
+    this.setState({ animation: 'slideOutUp' }, () => setTimeout(() => this.setState({ display: 'flex', image }), 800));
     setTimeout(() => this.hideAnimation(), 2000);
   }
 
