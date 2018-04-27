@@ -38,7 +38,7 @@ class Animation extends React.Component {
   }
 
   showAnimation = () => {
-    const image = require('../../img/holeMask.png');
+    const image = require('../../img/hole.png');
     this.setState({ animation: 'slideOutUp' }, () => setTimeout(() => this.setState({ display: 'flex', image }), 1000));
     setTimeout(() => this.hideAnimation(), 2000);
   }
@@ -50,19 +50,19 @@ class Animation extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={{ flex: 2 }}>
         <ImageBackground style={[styles.backgroundImage, { zIndex: 1 }]} source={this.state.image}>
-          <TouchableOpacity style={{ zIndex: -2 }} onPress={this.whackAmole}>
+          <TouchableOpacity onPress={this.whackAmole}>
             <Animatable.Image
               style={[styles.backgroundMole, { display: this.state.display }]}
               source={require('../../img/mole.png')}
               animation={this.state.animation}
               direction="alternate"
             >
-              <Image source={ require('../../img/holeMask.png')} />
             </Animatable.Image>
           </TouchableOpacity>
         </ImageBackground>
+        <Image style={[styles.backgroundImage, { zIndex: 10, position: 'absolute' }]}  source={ require('../../img/holeMask.png')} />
       </View>
     );
   }
