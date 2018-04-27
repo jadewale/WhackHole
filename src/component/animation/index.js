@@ -1,7 +1,7 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 import * as Animatable from 'react-native-animatable';
-import { TouchableOpacity, ImageBackground, View } from 'react-native';
+import { TouchableOpacity, ImageBackground, View, Image } from 'react-native';
 import styles from './styles';
 
 
@@ -59,6 +59,7 @@ class Animation extends React.Component {
               animation={this.state.animation}
               direction="alternate"
             >
+              <Image source={ require('../../img/holeMask.png')} />
             </Animatable.Image>
           </TouchableOpacity>
         </ImageBackground>
