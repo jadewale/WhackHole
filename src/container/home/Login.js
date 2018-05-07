@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Button } from 'react-native';
 
-const Login = ({ googleLogin }) => (
+const Login = ({ googleLogin, facebookLogin}) => (
   <View
     style={{
       flex: 1,
@@ -13,7 +13,7 @@ const Login = ({ googleLogin }) => (
   >
     <Button
       style={{
-        backgroundColor: 'white',
+        backgroundColor: 'red',
         width: 200,
         height: 100,
         borderWidth: 1,
@@ -23,11 +23,24 @@ const Login = ({ googleLogin }) => (
       title="Google Sign in"
       onPress={googleLogin}
     />
+    <Button
+      style={{
+        backgroundColor: 'black',
+        width: 200,
+        height: 100,
+        borderWidth: 1,
+        borderColor: 'black',
+        borderRadius: 5,
+      }}
+      title="Facebook Sign in"
+      onPress={facebookLogin}
+    />
   </View>
 );
 
 Login.propTypes = {
   googleLogin: PropTypes.func.isRequired,
+  facebookLogin: PropTypes.func.isRequired,
 };
 
 export default Login;
