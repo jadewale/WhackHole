@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Button } from 'react-native';
 
-const Login = ({ googleLogin, facebookLogin}) => (
+const Login = ({ googleLogin, facebookLogin }) => (
   <View
     style={{
       flex: 1,
