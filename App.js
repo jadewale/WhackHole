@@ -7,7 +7,7 @@ import Home from './src/container/home';
 import store from './store';
 
 const Route =
-  StackNavigator({ Home: { screen: Home } },
+  StackNavigator({ Home: { screen: Home }, Dashboard: { screen: Dashboard } },
     {
       headerMode: 'none',
       navigationOptions:

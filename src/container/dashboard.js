@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { View } from 'react-native';
+import { View, Button as NativeButton } from 'react-native';
 import Header from '../component/header';
 import GamePanel from '../container/gamePanel';
-import { increaseCount, decreaseCount, decreaseTimer, endGame, restartGame, updateBackground } from '../../actions'
+import { increaseCount, decreaseCount, decreaseTimer, endGame, restartGame, updateBackground } from '../../actions';
 import Button from '../component/button/index';
 
 
@@ -40,15 +40,87 @@ class Dashboard extends React.Component {
     this.props.restartGame();
   }
 
-  render() {
-    return (
-      <View style={{ flex: 1 }}>
-        { this.props.run ? <Header endGame={this.endGame} decreaseTimer={this.decreaseTimer} timer={this.props.timer} count={this.props.count} /> : null }
+  startGame = () => {
+    this.props.restartGame();
+  }
 
-        { this.props.run ?
-          <GamePanel decreaseCount={this.decreaseCount} background={this.props.background} updateBackground={this.props.updateBackground} addCount={this.addTotalCount} /> :
-          <RestartButton onClick={this.restartGame} />
-        }
+  leadersBoard = () => {
+
+  }
+
+  settings = () => {
+
+  }
+
+  render() {
+    if (this.props.run) {
+      return (
+        <View style={{ flex: 1 }}>
+          {this.props.run ? <Header
+            endGame={this.endGame}
+            decreaseTimer={this.decreaseTimer}
+            timer={this.props.timer}
+            count={this.props.count}
+          /> : null}
+
+          {this.props.run ? <GamePanel
+            decreaseCount={this.decreaseCount}
+            background={this.props.background}
+            updateBackground={this.props.updateBackground}
+            addCount={this.addTotalCount}
+          /> :
+            <RestartButton onClick={this.restartGame} />
+          }
+        </View>
+      );
+    }
+
+    return (
+      <View
+        style={{
+          flex: 1,
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <NativeButton
+          style={{
+            backgroundColor: 'red',
+            width: 200,
+            height: 100,
+            borderWidth: 1,
+            borderColor: 'black',
+            borderRadius: 5,
+          }}
+          title="Play Game"
+          onPress={this.startGame}
+        />
+        <NativeButton
+          style={{
+            backgroundColor: 'black',
+            width: 200,
+            height: 100,
+            borderWidth: 1,
+            borderColor: 'black',
+            borderRadius: 5,
+          }}
+          title="Leader's Board"
+          onPress={this.leadersBoard}
+        />
+
+        <NativeButton
+          style={{
+            backgroundColor: 'black',
+            width: 200,
+            height: 100,
+            borderWidth: 1,
+            borderColor: 'black',
+            borderRadius: 5,
+          }}
+          title="Setting"
+          onPress={this.settings}
+        />
       </View>
     );
   }

@@ -5,7 +5,7 @@ import {
 } from './constants';
 
 export function root(state = {
-  count: 0, timer: 120000, run: true, background: {},
+  count: 0, timer: 120000, run: false, background: {},
 }, action) {
   switch (action.type) {
     case MOLE_DECREASE: {

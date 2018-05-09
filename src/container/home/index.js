@@ -10,7 +10,9 @@ class Home extends React.Component {
       });
 
       if (result.type === 'success') {
-        console.log('yeah');
+        console.log(result);
+        const { navigate } = this.props.navigation;
+        navigate('Dashboard');
         return result.accessToken;
       }
       return { cancelled: true };
@@ -29,6 +31,8 @@ class Home extends React.Component {
       if (type === 'success') {
         const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
         console.log(await response.json().name);
+        const { navigate } = this.props.navigation;
+        navigate('Dashboard');
       }
 
     } catch (e) {
