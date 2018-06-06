@@ -10,8 +10,8 @@ Make sure you have expo installed locally
     yarn install
  ```
  ## Tools Used
- * [For Animation] https://github.com/oblador/react-native-animatable
- * [Redux] https://redux.js.org/ For state management
+ [**For Animation**] (https://github.com/oblador/react-native-animatable)
+ [**Redux**] (https://redux.js.org/) For state management
  ##
  Open Expo IDE and run the project
 
