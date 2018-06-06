@@ -1,3 +1,5 @@
+[![Contact me on Codementor](https://cdn.codementor.io/badges/contact_me_github.svg)](https://www.codementor.io/jolaadeadewale765?utm_source=github&utm_medium=button&utm_term=jolaadeadewale765&utm_campaign=github)
+
 ## Whack a Mole
 A game in which players use a mallet to hit toy moles, which appear at random, back into their holes.
 ## How To Run
