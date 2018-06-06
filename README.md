@@ -20,9 +20,7 @@ Make sure you have expo installed locally
 Game Play
 
 ![alt text](http://res.cloudinary.com/dd58mfinr/image/upload/c_scale,w_174/v1528296748/Screen_Shot_2018-06-06_at_3.48.40_PM_os96uy.png)
-
 Login in with Google or Facebook to save score
-
 ![alt text](http://res.cloudinary.com/dd58mfinr/image/upload/c_scale,w_174/v1528296741/Screen_Shot_2018-06-06_at_3.48.58_PM_byrcry.png)
 
 
