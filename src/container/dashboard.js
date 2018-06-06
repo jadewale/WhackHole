@@ -82,6 +82,7 @@ class Dashboard extends React.Component {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
+          backgroundColor: '#C9BF9C',
         }}
       >
         <NativeButton

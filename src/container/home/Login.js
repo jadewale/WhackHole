@@ -9,6 +9,7 @@ const Login = ({ googleLogin, facebookLogin }) => (
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
+      backgroundColor: '#C9BF9C',
     }}
   >
     <Button
